@@ -1,0 +1,64 @@
+{
+  "name": "nutriguide",
+  "version": "1.0.0",
+  "description": "NutriGuide 專業營養菜單系統",
+  "private": true,
+  "homepage": "https://DW8808.github.io/nutriguide",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:web": "cross-env VITE_TARGET=web vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build:web",
+    "deploy": "gh-pages -d dist",
+    "electron:preview": "vite build && electron .",
+    "electron:build": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "cross-env": "^7.0.3",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8",
+    "gh-pages": "^6.1.1",
+    "vite": "^5.4.8"
+  },
+  "build": {
+    "appId": "com.nutriguide.app",
+    "productName": "NutriGuide",
+    "copyright": "NutriGuide 營養衛教系統",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "public/icon.png",
+      "category": "public.app-category.healthcare-fitness"
+    },
+    "dmg": {
+      "title": "NutriGuide 營養系統",
+      "backgroundColor": "#F4EFE8"
+    }
+  }
+}
